@@ -9,8 +9,8 @@ RUN apt-get update && apt-get install -y git \
 RUN git clone https://github.com/kaldi-asr/kaldi build
 
 # build tools
-RUN cd build && cd tools && make -j 4 && cd ..
+RUN cd build && cd tools && make -j 4 && cd /
 
 # build scr, http://kaldi-asr.org/doc/build_setup.html
 # to remove debug and make faster runnable, change kaldi.mk after configure
-RUN ./configure --shared && make depend -j 4 && make -j 4
+RUN cd build && ./configure --shared && make depend -j 4 && make -j 4
